@@ -2,7 +2,7 @@
     export let item: {id: string, cost: number};
 </script>
 
-<a href={`/${item.id.replaceAll(" ", "-")}`} class="py-12">
+<a href={`/${item.id.replaceAll(" ", "-")}`} class="my-12">
     <div class="card flex flex-col items-center">
         <figure>
             <img src={`${item.id.replaceAll(" ", "-")}.jpg`} alt="Shoes"/>
