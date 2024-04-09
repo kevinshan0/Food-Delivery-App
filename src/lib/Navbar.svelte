@@ -1,8 +1,15 @@
+<script lang="ts">
+    import { goto } from "$app/navigation";
+    import { auth } from "./firebase/firebase.app";
+</script>
+
 <div class="navbar fixed bg-white z-10">
+    <!-- store logo -->
     <div class="flex-1 ml-5">
         <a href="/" class="btn btn-ghost text-2xl text-primary-content">STORE</a>
     </div>
 
+    <!-- cart button -->
     <div class="flex-none mx-5">
         <a href="/cart">
             <div role="button" class="btn btn-ghost btn-circle">
@@ -14,9 +21,21 @@
         </a>
     </div>
 
-    <div role="button" class="btn btn-ghost btn-circle avatar mr-5">
-        <div class="w-10 rounded-full">
-            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+    <!-- profile button -->
+
+    <div class="dropdown dropdown-bottom dropdown-end mr-5">
+        <div tabindex="0" role="button" class="w-10 m-1">
+            <img class="object-cover rounded-full"
+                alt="Tailwind CSS Navbar component"
+                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
         </div>
+        <ul class="dropdown-content z-[1] menu p-2 shadow rounded-box w-40">
+            <li><a href="/">Item 1</a></li>
+            {#if auth.currentUser}
+                <li><button on:click={auth.signOut}>Sign Out</button></li>
+            {:else}
+                <li><button on:click={() => {goto("/"); }}>Sign In</button></li>
+            {/if}
+        </ul>
     </div>
 </div>

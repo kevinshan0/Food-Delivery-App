@@ -48,17 +48,11 @@ table {
 
 /* // scrollbar */
 ::-webkit-scrollbar {
-    background-color: white;
+	display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    background-clip: content-box;
-}
-
-::-webkit-scrollbar-thumb {
-    background: black;
-    border-radius: 10px;
+body {
+	overscroll-behavior-y: none;
 }
 
 /* // global styles */
